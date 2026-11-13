@@ -1,10 +1,8 @@
 const { twiml } = require('../utils/twilio');
 const { generateVoiceReply } = require('../utils/setup');
-const { LANGUAGES } = require('../utils/setup');
 const { appendFollowUpGather } = require('../utils/twilio');
 const { createVoiceResponse } = require('../utils/twilio');
-// const { cleanString } = require('../utils/sanitize');
-// const { getPublicBaseUrl } = require('../utils/sanitize');
+const { cleanString, getPublicBaseUrl, LANGUAGES } = require('../utils/sanitize.js');
 
 const processLanguage = (req, res) => {
     const baseUrl = getPublicBaseUrl(req);

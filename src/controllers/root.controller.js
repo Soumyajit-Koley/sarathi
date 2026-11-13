@@ -1,4 +1,4 @@
-const { cleanString, getPublicBaseUrl } = require('../utils/sanitize');
+const { cleanString, getPublicBaseUrl, LANGUAGES } = require('../utils/sanitize.js');
 const { getActiveModelName } = require('../utils/setup');
 
 const rootMessage = (req, res) => {

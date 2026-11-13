@@ -1,6 +1,11 @@
-const { twiml } = require('../utils/twilio');
-// const { cleanString, getPublicBaseUrl } = require('../utils/sanitize');
-const { twilioClient } = require('../utils/setup');
+const twilio = require('twilio');
+const { cleanString, getPublicBaseUrl } = require('../utils/sanitize.js');
+
+const { twiml } = twilio;
+
+const accountSid = cleanString(process.env.TWILIO_ACCOUNT_SID);
+const authToken = cleanString(process.env.TWILIO_AUTH_TOKEN);
+const twilioClient = accountSid && authToken ? twilio(accountSid, authToken) : null;
 
 const callMe = async (req, res) => {
     try {
@@ -44,7 +49,7 @@ const callMe = async (req, res) => {
         console.error('Outbound Call Error:', error);
         res.status(500).send(`❌ Failed to place call: ${error.message}`);
     }
-}
+};
 
 const voiceResponse = (req, res) => {
     const baseUrl = getPublicBaseUrl(req);
@@ -65,9 +70,9 @@ const voiceResponse = (req, res) => {
 
     res.type('text/xml');
     res.send(response.toString());
-}
+};
 
 module.exports = {
     callMe,
-    voiceResponse,
+    voiceResponse
 };
