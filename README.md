@@ -33,7 +33,7 @@ sarathi/
         ├── sanitize.js 
         ├── setup.js
         └── twilio.js
-
+```
 
 ```bash
 # 1. Clone the repository
